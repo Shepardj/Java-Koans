@@ -14,9 +14,9 @@ public class AboutCasting {
 		int a = 6;
 		long b = 10;
 		Object c = a + b;
-		assertEquals(c, __);
-		assertEquals(c instanceof Integer, __);
-		assertEquals(c instanceof Long, __);
+		assertEquals(c, (long)16);
+		assertEquals(c instanceof Integer, false);
+		assertEquals(c instanceof Long, true);
 	}
 
 	@Koan
@@ -24,7 +24,7 @@ public class AboutCasting {
 		long a = 2147483648L;
 		// What happens if we force a long value into an int?
 		int b = (int) a;
-		assertEquals(b, __);
+		assertEquals(b, -2147483648);
 	}
 
 	@Koan
@@ -32,7 +32,7 @@ public class AboutCasting {
 		int a = 1;
 		int b = Integer.MAX_VALUE;
 		long c = a + b; // still overflows int... which is the Integer.MIN_VALUE, the operation occurs prior to assignment to long
-		assertEquals(c, __);
+		assertEquals(c, (long)Integer.MIN_VALUE); //odd test
 	}
 
 	interface Sleepable {
@@ -61,10 +61,10 @@ public class AboutCasting {
 	public void downCastWithInheritance() {
 		Child child = new Child();
 		Parent parentReference = child; // Why isn't there an explicit cast?
-		assertEquals(child instanceof Child, __);
-		assertEquals(parentReference instanceof Child, __);
-		assertEquals(parentReference instanceof Parent, __);
-		assertEquals(parentReference instanceof Grandparent, __);
+		assertEquals(child instanceof Child, true);
+		assertEquals(parentReference instanceof Child, true);
+		assertEquals(parentReference instanceof Parent, true);
+		assertEquals(parentReference instanceof Grandparent, true);
 	}
 
 	@Koan
@@ -72,7 +72,7 @@ public class AboutCasting {
 		Child child = new Child();
 		Parent parentReference = child;
 		// If the result is unexpected, consider the difference between an instance and its reference
-		assertEquals(parentReference.complain(), __);
+		assertEquals(parentReference.complain(), "Are we there yet!!");
 	}
 
 	@Koan
