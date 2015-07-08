@@ -19,13 +19,13 @@ public class AboutInnerClasses {
 	@Koan
 	public void creatingInnerClassInstance() {
 		Inner someObject = new Inner();
-		assertEquals(someObject.doStuff(),__);
+		assertEquals(someObject.doStuff(), "stuff");
 	}
 	
 	@Koan
 	public void creatingInnerClassInstanceWithOtherSyntax() {
 		AboutInnerClasses.Inner someObject = this.new Inner();
-		assertEquals(someObject.doStuff(),__);
+		assertEquals(someObject.doStuff(),"stuff");
 	}
 	
 	private int x = 10;
@@ -33,7 +33,7 @@ public class AboutInnerClasses {
 	@Koan
 	public void accessingOuterClassMembers() {
 		Inner someObject = new Inner();
-		assertEquals(someObject.returnOuter(),__);
+		assertEquals(someObject.returnOuter(),10);
 	}
 	
 	@Koan
@@ -41,7 +41,7 @@ public class AboutInnerClasses {
 		class MethodInnerClass {
 			int oneHundred() { return 100; }
 		}
-		assertEquals(new MethodInnerClass().oneHundred(), __);
+		assertEquals(new MethodInnerClass().oneHundred(), 100);
 		// Where can you use this class?
 	}
 	
@@ -61,9 +61,9 @@ public class AboutInnerClasses {
 	@Koan
 	public void innerClassesInMethodsThatEscape() {
 		AnotherInnerClass ic = new AnotherInnerClass();
-		assertEquals(ic.thousand(), __);
+		assertEquals(ic.thousand(), 1000);
 		AnotherInnerClass theCrazyIC = ic.crazyReturn();
-		assertEquals(theCrazyIC.thousand(), __);
+		assertEquals(theCrazyIC.thousand(), 2000);
 	}
 	
 	int theAnswer() { return 42; }
@@ -73,7 +73,7 @@ public class AboutInnerClasses {
 		AboutInnerClasses anonymous = new AboutInnerClasses() {
 			int theAnswer() { return 23; }
 		};// <- Why do you need a semicolon here?
-		assertEquals(anonymous.theAnswer(), __);
+		assertEquals(anonymous.theAnswer(), 23);
 	}
 	
 	@Koan
